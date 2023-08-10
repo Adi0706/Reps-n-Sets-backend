@@ -8,6 +8,6 @@ const Signupschema = new mongoose.Schema({
 })
 
 
-const SignupModel = mongoose.model("signup", Signupschema);
+const SignupModel = mongoose.model("signups", Signupschema);
 
 module.exports = SignupModel ;

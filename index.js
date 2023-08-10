@@ -19,7 +19,7 @@ app.post('/signups',(req,res)=>{
         }else{
             SignupModel.create({
                 name:name,email:email,password:password
-            }).then(result=>res.json("Account Created"))
+            }).then(res=>res.json("Account Created"))
             .catch(err=>res.json("Error"))
         }
     }).catch(err=>res.json(err))
