@@ -11,7 +11,11 @@ app.use(express.json())
 
 mongoose.connect('mongodb://127.0.0.1:27017/repsNsets')
 
-app.get('/logins',(req,res)=>{
+
+
+
+
+app.post('/login',(req,res)=>{
     const {loginEmail,loginPassword}=req.body ; 
     LoginModel.findOne({email:loginEmail})
     .then(user=>{
