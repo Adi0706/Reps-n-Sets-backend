@@ -2,6 +2,7 @@ const express = require ('express')
 const mongoose = require('mongoose')
 const cors = require ('cors')
 const SignupModel = require('./models/signup');
+const LoginModel = require('./models/login');
 
 const app = express()
 app.use(cors())
@@ -9,6 +10,25 @@ app.use(express.json())
 
 
 mongoose.connect('mongodb://127.0.0.1:27017/repsNsets')
+
+app.get('/logins',(req,res)=>{
+    const {loginEmail,loginPassword}=req.body ; 
+    LoginModel.findOne({email:loginEmail})
+    .then(user=>{
+        if(user){
+            if(user.password === loginPassword){
+                res.json("Login Successfull")
+            }else{
+                res.json("Incorrect Password")
+            }
+        }else{
+            res.json("Account not found")
+        }
+    })
+
+})
+
+
 
 
 app.post('/signups',(req,res)=>{
